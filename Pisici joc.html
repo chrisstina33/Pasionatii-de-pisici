@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobolan si pisica poznasa-joc interactiv</title>
+    <style>
+      button{
+        color:indianred;
+        background-color: lavenderblush;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bolder;
+      }
+      button:hover{
+        color: blue;
+        background-color: dodgerblue;
+      }
+
+        canvas {
+          border: 2px solid gold;
+          height:313px;
+          width:626px;
+         display:block;
+          margin: 20px auto;
+          background-image: url(https://img.freepik.com/free-vector/winter-landscape-backyard-with-bare-trees-fence-white-snow-wind-vector-cartoon-illustration-empty-yard-garden-park-with-snowy-lawn-fencing-blizzard_107791-9254.jpg);
+        }
+    
+        body{
+          color:rgb(255, 0, 21);
+          background:linear-gradient(rgb(157, 240, 255), rgb(234, 248, 255),rgb(126, 126, 247) );
+        }
+        #startBtn {
+          display: block;
+          margin: 0 auto;
+          padding: 10px 20px;
+          font-size: 18px;
+          background-color: #ff0000;
+          color: rgb(7, 226, 255);
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+    
+        #startBtn:hover {
+          background-color: #9891ff;
+        }
+      </style>
+    </head>
+    <body>
+      <center><h1>Joc interactiv-șobolanul și pisica</h1></center>
+      <h2>Chiar și în perioada geroasă, ei se tachinează...</h2>
+      <button id="startBtn">Începe jocul!</button>
+      <canvas id="canvas" width="800" height="400"></canvas>
+      <center><button onclick="window.location.href='Pisica socializeaza joc.html'">Vezi cum socializeaza o pisica cu alte pisici!</button>
+      <button onclick="window.location.href='Pisici joc.html'">Joaca-te cu o pisica!</button>
+      <button onclick="window.location.href='Simulator de nutritie pisica.html'">Observa cum se hraneste pisica!</button>
+      <button onclick="window.location.href='Rating games.html'">Reviews of my games</button></center>
+      <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+    
+        const catImg = new Image();
+        catImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-afLsaADtcudKY7vdFy0WOZoS1PFVJhWmOw&s";
+    
+        const mouseImg = new Image();
+        mouseImg.src = "data:image/jpeg;base64,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"; // Pune aici base64-ul complet
+    
+        let catX = 100;
+        let catY = 280;
+        let mouseX = 600;
+        let mouseY = 280;
+        let mouseSpeed = -2;
+        let running = false;
+    
+        function draw() {
+          if (!running) return;
+    
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(catImg, catX, catY, 100, 100);
+          ctx.drawImage(mouseImg, mouseX, mouseY, 60, 60);
+    
+          // Mișcă șoricelul înainte și înapoi
+          mouseX += mouseSpeed;
+          if (mouseX < 0 || mouseX > canvas.width - 60) {
+            mouseSpeed *= -1;
+          }
+    
+          // Pisica aleargă după șoricel (se apropie ușor)
+          if (catX < mouseX - 60) {
+            catX += 1.5;
+          } else if (catX > mouseX - 60) {
+            catX -= 1.5;
+          }
+    
+          requestAnimationFrame(draw);
+        }
+    
+        document.getElementById("startBtn").addEventListener("click", () => {
+          if (!running) {
+            running = true;
+            draw();
+          }
+        });
+    
+        catImg.onload = () => {
+          mouseImg.onload = () => {
+            ctx.drawImage(catImg, catX, catY, 100, 100);
+            ctx.drawImage(mouseImg, mouseX, mouseY, 60, 60);
+          };
+        };
+      </script>
+</body>
+</html>

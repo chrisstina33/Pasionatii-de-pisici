@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pisici în grădină vorbitoare</title>
+
+  <center><h1>Cum socializeaza pisicutele(traducere din pisiceasca)</h1>
+  <h3>Urmariti mai jos cum se plimba pisicile printr-o gradina <strong>mistica</strong> si <bold>cum se alearga, vorbind.</bold> </h3></center>
+  <style>
+    button{
+        color: red;
+        background-color: royalblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bolder;
+        text-shadow: black;
+        
+    }
+    button:hover{
+color: white;
+background-color: blue;
+    }
+    body {
+
+      margin: 0;
+      background: linear-gradient(pink, rgb(106, 128, 255), rgb(255, 0, 98) );
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: white;
+    }
+
+    canvas {
+        background:url('https://img.freepik.com/premium-photo/sketch-garden-with-path-trees_1064589-153499.jpg');
+      display: block;
+      margin: 0 auto;
+      
+      background-size: cover;
+      border: 5px solid #3c10ff;
+      border-radius: 20px;
+      width: 736px;
+      height: 564px;
+    }
+
+
+  
+  </style>
+</head>
+<body>
+    
+  <canvas id="canvas" width="900" height="550"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const groundY = 420; // zona "de jos" - podeaua pe care merg
+
+    const pisici = [
+      { x: 100, y: groundY, dx: 1.5, img: new Image(), flip: false },
+      { x: 400, y: groundY, dx: -1.2, img: new Image(), flip: true },
+      { x: 700, y: groundY, dx: -1.7, img: new Image(), flip: false }
+    ];
+
+    pisici[0].img.src = "pisi.png" ;
+    pisici[1].img.src = "pisi2.png" ;
+    pisici[2].img.src = "pisi3.png";
+
+    let mesaj = "";
+    let mesajX = 0;
+    let mesajY = 0;
+    let mesajTimeout = null;
+
+    function update() {
+      for (let p of pisici) {
+        p.x += p.dx;
+
+        if (p.x < 0 || p.x > canvas.width - 85) {
+          p.dx *= -1;
+          p.flip = !p.flip;
+        }
+      }
+
+      // Verifică întâlniri
+      for (let i = 0; i < pisici.length; i++) {
+        for (let j = i + 1; j < pisici.length; j++) {
+          const a = pisici[i];
+          const b = pisici[j];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100 && !mesajTimeout) {
+            mesaj = randomMesaj();
+            mesajX = (a.x + b.x) / 2;
+            mesajY = groundY - 30;
+            mesajTimeout = setTimeout(() => {
+              mesaj = "";
+              mesajTimeout = null;
+            }, 2000);
+          }
+        }
+      }
+    }
+
+    function randomMesaj() {
+      const mesaje = [
+        "Miau! Ce mai faci?",
+        "Vrei să ne jucăm cu ghemul?",
+        "Ai văzut vrăbiuța aia?",
+        "Eu torc mai tare decât tine!",
+        "Hai la joacă sub tufiș!"
+      ];
+      return mesaje[Math.floor(Math.random() * mesaje.length)];
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let p of pisici) {
+        ctx.save();
+        if (p.flip) {
+          ctx.translate(p.x + 85, p.y);
+          ctx.scale(-1, 1);
+          ctx.drawImage(p.img, 0, 0, 85, 85);
+        } else {
+          ctx.drawImage(p.img, p.x, p.y, 85, 85);
+        }
+        ctx.restore();
+      }
+
+      if (mesaj) {
+        ctx.font = "22px Comic Sans MS";
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 3;
+        ctx.strokeText(mesaj, mesajX, mesajY);
+        ctx.fillText(mesaj, mesajX, mesajY);
+      }
+    }
+
+    function animate() {
+      update();
+      draw();
+      requestAnimationFrame(animate);
+    }
+    
+
+    animate();
+  </script>
+  <center>
+  <button onclick="window.location.href='Pisica socializeaza joc.html'">Vezi cum socializeaza o pisica cu alte pisici!</button>
+  <button onclick="window.location.href='Pisici joc.html'">Joaca-te cu o pisica!</button>
+  <button onclick="window.location.href='Pagina principala info despre pisici.html'">Inapoi la pagina principala</button>
+  <button onclick="window.location.href='Simulator de nutritie pisica.html'">Observa cum se hraneste pisica!</button>
+  <button onlclick="window.location.href='Rating games.html'">Reviews of my games</button>
+  <button onclick="window.location.href='Parere.html'">Impresii despre cursul de HTML,CSS si JavaScript in perioada februarie-aprilie 2025</button>
+</center>
+</body>
+</html>
