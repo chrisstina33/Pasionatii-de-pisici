@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PisiPedia</title>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="cloud left-cloud"></div>
+    <div class="titles">
+  <center><h1>Pisicile-ghemotoace cu personalitate</h1></center>  
+  <center><h2>Pentru oamenii pasionati de pisicute</h2></center>
+  <button onclick="window.location.href='Pisica socializeaza joc.html'">Vezi cum socializeaza o pisica cu alte pisici!</button>
+  <button onclick="window.location.href='Pisici joc.html'">Joaca-te cu o pisica!</button>
+  <button onclick="window.location.href='Simulator de nutritie pisica.html'">Observa cum se hraneste pisica!</button>
+  <button onclick="window.location.href='Rating games.html'">Reviews of my games</button>
+
+  <div class="image-gallery">
+    <img src="cat1.jpg" >
+    <img src="cat2.jpg" >
+    <img src="cat3.jpg" >
+    <img src="cat4.jpg" >
+    <img src="cat5.jpg" >
+  </div>
+  
+  
+  <div class="cloud right-cloud"></div>
+  
+  
+  
+  <h1>Tipuri de pisici</h1>
+  </div>
+  <div class="content">
+    <section>
+      <h3>Pisici domestice</h3>
+      <p>Aceste pisici sunt companionii noștri blănoși, mereu în căutare de somn și mângâieri.</p>
+    </section>
+    <section>
+      <h3>Pisici sălbatice</h3>
+      <p>Independente și misterioase, aceste feline trăiesc în libertate deplină.</p>
+    </section>
+    <section>
+      <h3>Rase de pisici</h3>
+      <p>De la siameze regale la siberiene pufoase.</p>
+    </section>
+  </div>
+
+ <div class="chenar-info">
+  <h1>Ghid pentru ingrijirea unei pisici(sau a mai multor pisici)</h1>
+    <p>Pisicile sunt animale fermecătoare ce ne oferă zilnic un motiv de bucurie făcându-ne viețile mai frumoase. Fie că este vorba de temperamentul lor jucăuș, privirea misterioasă sau momentele de afecțiune, pisicile captivează inima oricărui iubitor de animale. Îngrijirea zilnică a pisicilor reprezintă un aspect esențial pentru a le asigura o starea de bine permanentă.
+
+      Pentru a fi sigur că pisicuța ta este mereu fericită și sănătoasă, este esențial să îi acorzi o atenție specială și să te dedici zilnic nevoilor ei. Fie că vorbim despre asigurarea unei rutine de zi cu zi, o igienă dentară corespunzătoare, o hrănire sănătoasă, îngrijirea pisicii după sterilizare, activități recreative sau îngrijirea puilor de pisică și creșterea lor, la Purina vei găsi toate sfaturile necesare pentru a înțelege nevoile lor zilnice și pentru a le oferi toată atenția și grija pe care le merită. </p>
+    
+ </div>
+    
+
+    <style>
+      body {
+        color:aliceblue;
+  margin: 0;
+  font-family: 'Dancing Script', cursive;
+  background: linear-gradient(#b006ff, #f7125e);
+  font-display: white;
+  font-style: oblique;
+  font-weight: bolder;
+
+}
+.header {
+  text-align: center;
+  position: relative;
+  padding: 40px 0;
+}
+
+.cloud {
+ 
+  background: url('cloud page.png') no-repeat center/contain;
+  position: absolute;
+  top: 20px;
+  border: violet;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  clip-path: path('M75 30 C75 10, 110 10, 110 35 C110 55, 75 75, 75 90 C75 75, 40 55, 40 35 C40 10, 75 10, 75 30 Z');
+}
+
+.left-cloud {
+  left: 100px;
+  
+}
+
+.right-cloud {
+  right: 100px;
+
+}
+
+.titles h1, .titles h2 {
+  margin: 0;
+}
+
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+
+.chenar-info {
+  background-color: rgba(255, 255, 255, 0.2); /* un pic de transparență, ca un norișor */
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px); /* efect de geam mat, fancy */
+  font-weight: lighter;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(7, 11, 252);
+  text-shadow:#fff8f0;
+}
+
+.image-gallery {
+  border: 3px solid #ccc;
+  padding: 15px;
+  margin: 40px auto;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff8f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgb(255, 0, 128);
+}
+
+.image-gallery img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+button {
+background-color: #96f3fa;
+color: deeppink;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin: 10px;
+font-family:Georgia, 'Times New Roman', Times, serif;
+font-weight: bolder;
+}
+button:hover{
+  background-color: #f7125e;
+  color:#b006ff;
+}
+    </style>
+
+</body>
+</html>
